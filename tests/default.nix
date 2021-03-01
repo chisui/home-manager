@@ -78,7 +78,6 @@ import nmt {
     ./modules/programs/ssh
     ./modules/programs/starship
     ./modules/programs/texlive
-    ./modules/programs/thunderbird
     ./modules/programs/tmux
     ./modules/programs/topgrade
     ./modules/programs/vscode
@@ -107,6 +106,7 @@ import nmt {
     ./modules/programs/rbw
     ./modules/programs/rofi
     ./modules/programs/rofi-pass
+    ./modules/programs/thunderbird
     ./modules/programs/waybar
     ./modules/services/barrier
     ./modules/services/dropbox
