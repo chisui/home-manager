@@ -20,7 +20,7 @@
     githubId = 7798336;
   };
   chisui = {
-    email = "philipp.dargel@neuland-bfi.de";
+    email = "chisui.pd@gmail.com";
     name = "Philipp Dargel";
     github = "chisui";
     githubId = 4526429;
