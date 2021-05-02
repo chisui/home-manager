@@ -116,6 +116,9 @@ in
     #
     #     date --iso-8601=second --universal
     #
+    # On darwin (or BSD like systems) use
+    #
+    #     date -u +'%Y-%m-%dT%H:%M:%S+00:00'
     news.entries = [
       {
         time = "2017-09-01T10:56:28+00:00";
@@ -1863,6 +1866,7 @@ in
           lists to polybar-style 'foo-0, foo-1, ...' lists.
         '';
       }
+
       {
         time = "2021-02-25T22:36:43+00:00";
         condition = config.programs.git.enable && any (msmtp: msmtp.enable)
@@ -1873,6 +1877,83 @@ in
           'accounts.email.accounts.<name>.msmtp.enable' is true.
         '';
       }
+
+      {
+        time = "2021-03-03T22:16:05+00:00";
+        message = ''
+          Home Manager now respects the 'NO_COLOR' environment variable as per
+          https://no-color.org/.
+        '';
+      }
+
+      {
+        time = "2021-03-29T21:05:50+00:00";
+        message = ''
+          Configuration specified by 'programs.dircolors.extraConfig' is now
+          applied after 'programs.dircolors.settings'.
+        '';
+      }
+
+      {
+        time = "2021-04-11T20:44:54+00:00";
+        message = ''
+          A new module is available: 'programs.exa'.
+        '';
+      }
+
+      {
+        time = "2021-04-23T10:00:00+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new module is available: 'services.pass-secret-service'.
+        '';
+      }
+
+      {
+        time = "2021-04-26T07:00:00+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new service is available: 'services.poweralertd'.
+        '';
+      }
+
+      {
+        time = "2021-04-28T10:00:00+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new service is available: 'services.mpris-proxy'.
+        '';
+      }
+
+      {
+        time = "2021-04-28T12:00:00+00:00";
+        message = ''
+          A new module is available: 'programs.topgrade'.
+        '';
+      }
+
+      {
+        time = "2021-04-30T22:05:01+00:00";
+        condition = hostPlatform.isLinux;
+        message = ''
+          A new service is available: 'services.barrier'.
+        '';
+      }
+
+      {
+        time = "2021-05-01T15:16:08+00:00";
+        message = ''
+          A new module is available: 'programs.lazygit'.
+        '';
+      }
+      
+      {
+        time = "2021-04-27T00:00:00+00:00";
+        message = ''
+          A new module is available: 'programs.ncspot'.
+        '';
+      }
+
     ];
   };
 }

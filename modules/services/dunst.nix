@@ -57,16 +57,30 @@ in {
     services.dunst = {
       enable = mkEnableOption "the dunst notification daemon";
 
+      package = mkOption {
+        type = types.package;
+        default = pkgs.dunst;
+        defaultText = literalExample "pkgs.dunst";
+        description = "Package providing <command>dunst</command>.";
+      };
+
       iconTheme = mkOption {
         type = themeType;
         default = hicolorTheme;
         description = "Set the icon theme.";
       };
 
+      waylandDisplay = mkOption {
+        type = types.str;
+        default = "";
+        description =
+          "Set the service's <envar>WAYLAND_DISPLAY</envar> environment variable.";
+      };
+
       settings = mkOption {
         type = with types; attrsOf (attrsOf eitherStrBoolIntList);
         default = { };
-        description = "Configuration written to ~/.config/dunstrc";
+        description = "Configuration written to ~/.config/dunst/dunstrc";
         example = literalExample ''
           {
             global = {
@@ -140,7 +154,9 @@ in {
         Service = {
           Type = "dbus";
           BusName = "org.freedesktop.Notifications";
-          ExecStart = "${pkgs.dunst}/bin/dunst";
+          ExecStart = "${cfg.package}/bin/dunst";
+          Environment = optionalString (cfg.waylandDisplay != "")
+            "WAYLAND_DISPLAY=${cfg.waylandDisplay}";
         };
       };
     }

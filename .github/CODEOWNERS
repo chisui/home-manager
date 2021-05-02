@@ -57,6 +57,8 @@
 
 /modules/programs/emacs.nix                           @rycee
 
+/modules/programs/exa.nix                             @kalhauge
+
 /modules/programs/firefox.nix                         @rycee
 
 /modules/programs/gh.nix                              @Gerschtli
@@ -75,6 +77,8 @@
 /modules/programs/i3status-rust.nix                   @workflow
 
 /modules/programs/keychain.nix                        @marsam
+
+/modules/programs/lazygit.nix                         @kalhauge
 
 /modules/programs/lesspipe.nix                        @rycee
 
@@ -101,8 +105,13 @@
 /tests/modules/programs/ncmpcpp                       @olmokramer
 /tests/modules/programs/ncmpcpp-linux                 @olmokramer
 
+/modules/programs/ncspot.nix                          @marsam
+
 /modules/programs/ne.nix                              @cwyc
 /tests/modules/programs/ne                            @cwyc
+
+/modules/programs/newsboat.nix                        @sumnerevans
+/tests/modules/programs/newsboat                      @sumnerevans
 
 /modules/programs/noti.nix                            @marsam
 
@@ -136,14 +145,17 @@
 /modules/programs/sbt.nix                             @kubukoz
 /tests/modules/programs/sbt                           @kubukoz
 
+/modules/programs/scmpuff.nix                         @cpcloud
+/tests/modules/programs/scmpuff                       @cpcloud
+
 /modules/programs/ssh.nix                             @rycee
 
 /modules/programs/starship.nix                        @marsam
 
 /modules/programs/texlive.nix                         @rycee
 
-/modules/programs/thunderbird.nix                     @chisui
-/tests/modules/programs/thunderbird                   @chisui
+/modules/programs/topgrade.nix                        @msfjarvis
+/tests/modules/programs/topgrade                      @msfjarvis
 
 /modules/programs/waybar.nix                          @berbiche
 /tests/modules/programs/waybar                        @berbiche
@@ -155,6 +167,9 @@
 /modules/programs/zoxide.nix                          @marsam
 
 /modules/programs/zsh/prezto.nix                      @NickHu
+
+/modules/services/barrier.nix                         @Kritnich
+/tests/modules/services/barrier                       @Kritnich
 
 /modules/services/caffeine.nix                        @uvNikita
 
@@ -200,11 +215,15 @@
 
 /modules/services/mpdris2.nix                         @pjones
 
+/modules/services/mpris-proxy.nix                     @ThibautMarty
+
 /modules/services/muchsync.nix                        @pacien
 
 /modules/services/network-manager-applet.nix          @rycee
 
 /modules/services/parcellite.nix                      @gleber
+
+/modules/services/pass-secret-service.nix             @cab404
 
 /modules/services/password-store-sync.nix             @pacien
 
@@ -217,6 +236,8 @@
 
 /modules/services/playerctld.nix                      @fendse
 /tests/modules/playerctld                             @fendse
+
+/modules/services/poweralertd.nix                     @ThibautMarty
 
 /modules/services/pulseeffects.nix                    @jonringer
 
@@ -239,7 +260,13 @@
 
 /modules/services/unison.nix                          @pacien
 
-/modules/services/window-managers/i3-sway/sway.nix    @alexarice
+/modules/services/window-managers/i3-sway/i3.nix      @sumnerevans
+/tests/modules/services/window-managers/i3            @sumnerevans
+
+/modules/services/window-managers/i3-sway/lib         @sumnerevans
+
+/modules/services/window-managers/i3-sway/sway.nix    @alexarice @sumnerevans
+/tests/modules/services/window-managers/sway          @sumnerevans
 
 /modules/services/wlsunset.nix                        @matrss
 /tests/modules/services/wlsunset                      @matrss

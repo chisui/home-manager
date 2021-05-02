@@ -15,11 +15,24 @@ let
     listsAsDuplicateKeys = true;
   } cfg.settings;
 
+  scdaemonCfgText = generators.toKeyValue {
+    inherit mkKeyValue;
+    listsAsDuplicateKeys = true;
+  } cfg.scdaemonSettings;
+
   primitiveType = types.oneOf [ types.str types.bool ];
 in
 {
   options.programs.gpg = {
     enable = mkEnableOption "GnuPG";
+
+    package = mkOption {
+      type = types.package;
+      default = pkgs.gnupg;
+      defaultText = literalExample "pkgs.gnupg";
+      example = literalExample "pkgs.gnupg23";
+      description = "The Gnupg package to use (also used the gpg-agent service).";
+    };
 
     settings = mkOption {
       type = types.attrsOf (types.either primitiveType (types.listOf types.str));
@@ -34,6 +47,28 @@ in
         in the gpg manpage:
         <link xlink:href="https://gnupg.org/documentation/manpage.html"/>.
       '';
+    };
+
+    scdaemonSettings = mkOption {
+      type = types.attrsOf (types.either primitiveType (types.listOf types.str));
+      example = literalExample ''
+        {
+          disable-ccid = true;
+        }
+      '';
+      description = ''
+        SCdaemon configuration options. Available options are described
+        in the gpg scdaemon manpage:
+        <link xlink:href="https://www.gnupg.org/documentation/manuals/gnupg/Scdaemon-Options.html"/>.
+      '';
+    };
+
+    homedir = mkOption {
+      type = types.path;
+      example = literalExample "\"\${config.xdg.dataHome}/gnupg\"";
+      default = "${config.home.homeDirectory}/.gnupg";
+      defaultText = literalExample "\"\${config.home.homeDirectory}/.gnupg\"";
+      description = "Directory to store keychains and configuration.";
     };
   };
 
@@ -59,8 +94,17 @@ in
       use-agent = mkDefault true;
     };
 
-    home.packages = [ pkgs.gnupg ];
+    programs.gpg.scdaemonSettings = {
+      # no defaults for scdaemon
+    };
 
-    home.file.".gnupg/gpg.conf".text = cfgText;
+    home.packages = [ cfg.package ];
+    home.sessionVariables = {
+      GNUPGHOME = cfg.homedir;
+    };
+
+    home.file."${cfg.homedir}/gpg.conf".text = cfgText;
+
+    home.file."${cfg.homedir}/scdaemon.conf".text = scdaemonCfgText;
   };
 }

@@ -55,6 +55,7 @@ import nmt {
     ./modules/programs/gpg
     ./modules/programs/i3status
     ./modules/programs/kakoune
+    ./modules/programs/kitty
     ./modules/programs/lf
     ./modules/programs/lieer
     ./modules/programs/man
@@ -65,14 +66,17 @@ import nmt {
     ./modules/programs/neomutt
     ./modules/programs/newsboat
     ./modules/programs/nushell
+    ./modules/programs/pet
     ./modules/programs/powerline-go
     ./modules/programs/qutebrowser
     ./modules/programs/readline
     ./modules/programs/sbt
+    ./modules/programs/scmpuff
     ./modules/programs/ssh
     ./modules/programs/starship
     ./modules/programs/texlive
     ./modules/programs/tmux
+    ./modules/programs/topgrade
     ./modules/programs/vscode
     ./modules/programs/zplug
     ./modules/programs/zsh
@@ -82,8 +86,10 @@ import nmt {
   ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
     ./modules/config/i18n
     ./modules/misc/debug
+    ./modules/misc/gtk
     ./modules/misc/numlock
     ./modules/misc/pam
+    ./modules/misc/qt
     ./modules/misc/xdg
     ./modules/misc/xsession
     ./modules/programs/abook
@@ -97,15 +103,16 @@ import nmt {
     ./modules/programs/rofi-pass
     ./modules/programs/thunderbird
     ./modules/programs/waybar
+    ./modules/services/barrier
     ./modules/services/dropbox
     ./modules/services/emacs
     ./modules/services/fluidsynth
     ./modules/services/kanshi
     ./modules/services/lieer
-    ./modules/services/redshift-gammastep
     ./modules/services/pbgopy
     ./modules/services/playerctld
     ./modules/services/polybar
+    ./modules/services/redshift-gammastep
     ./modules/services/sxhkd
     ./modules/services/window-managers/i3
     ./modules/services/window-managers/sway

@@ -51,6 +51,14 @@ in {
       '';
     };
 
+    loadAutoconfig = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        Load settings configured via the GUI.
+      '';
+    };
+
     searchEngines = mkOption {
       type = types.attrsOf types.str;
       default = { };
@@ -252,11 +260,13 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-
-    xdg.configFile."qutebrowser/config.py".text = concatStringsSep "\n" ([ ]
-      ++ mapAttrsToList (formatLine "c.") cfg.settings
+  config = let
+    qutebrowserConfig = concatStringsSep "\n" ([
+      (if cfg.loadAutoconfig then
+        "config.load_autoconfig()"
+      else
+        "config.load_autoconfig(False)")
+    ] ++ mapAttrsToList (formatLine "c.") cfg.settings
       ++ mapAttrsToList (formatDictLine "c.aliases") cfg.aliases
       ++ mapAttrsToList (formatDictLine "c.url.searchengines") cfg.searchEngines
       ++ mapAttrsToList (formatDictLine "c.bindings.key_mappings")
@@ -264,5 +274,13 @@ in {
       ++ optional (!cfg.enableDefaultBindings) "c.bindings.default = {}"
       ++ mapAttrsToList formatKeyBindings cfg.keyBindings
       ++ optional (cfg.extraConfig != "") cfg.extraConfig);
+  in mkIf cfg.enable {
+    home.packages = [ cfg.package ];
+
+    home.file.".qutebrowser/config.py" =
+      mkIf pkgs.stdenv.hostPlatform.isDarwin { text = qutebrowserConfig; };
+
+    xdg.configFile."qutebrowser/config.py" =
+      mkIf pkgs.stdenv.hostPlatform.isLinux { text = qutebrowserConfig; };
   };
 }

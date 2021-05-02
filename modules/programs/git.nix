@@ -61,8 +61,13 @@ let
   signModule = types.submodule {
     options = {
       key = mkOption {
-        type = types.str;
-        description = "The default GPG signing key fingerprint.";
+        type = types.nullOr types.str;
+        description = ''
+          The default GPG signing key fingerprint.
+          </para><para>
+          Set to <literal>null</literal> to let GnuPG decide what signing key
+          to use depending on commit’s author.
+        '';
       };
 
       signByDefault = mkOption {
@@ -290,6 +295,7 @@ in {
                   "ssl")
               else
                 "";
+              smtpSslCertPath = mkIf smtp.tls.enable smtp.tls.certificatesFile;
               smtpServer = smtp.host;
               smtpUser = userName;
               from = address;
@@ -302,7 +308,7 @@ in {
 
     (mkIf (cfg.signing != null) {
       programs.git.iniContent = {
-        user.signingKey = cfg.signing.key;
+        user.signingKey = mkIf (cfg.signing.key != null) cfg.signing.key;
         commit.gpgSign = cfg.signing.signByDefault;
         gpg.program = cfg.signing.gpgPath;
       };
@@ -353,6 +359,8 @@ in {
     })
 
     (mkIf cfg.delta.enable {
+      home.packages = [ pkgs.delta ];
+
       programs.git.iniContent = let deltaCommand = "${pkgs.delta}/bin/delta";
       in {
         core.pager = deltaCommand;
