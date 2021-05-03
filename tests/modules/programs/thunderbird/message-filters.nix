@@ -4,15 +4,19 @@ with lib;
 
 {
   config = {
+    accounts.email.accounts.testUser = {
+      thunderbird.enable = true;
+      userName = "test-user";
+      smtp = {
+        host = "smpt.somewhere.org";
+      }; 
+      imap = {
+        host = "imap.somewhere.org";
+      }; 
+    };
     programs.thunderbird = {
       enable = true;
-      profiles.testUser.accounts."some.one@somewhere.net".filters = fx:
-        with fx; {
-          "some filter" = {
-            condition = all [ "subject,contains,hello" ];
-            actions = [ mark-read (move-to (imap-folder "some/folder")) ];
-          };
-        };
+      profiles.testUser.isDefault = true;
     };
 
     nmt.script = ''
