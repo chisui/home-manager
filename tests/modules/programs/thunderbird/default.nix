@@ -1,1 +1,4 @@
-{ thunderbird-message-filters = ./message-filters.nix; }
+{
+  thunderbird-mail-accounts = ./mail-accounts;
+  thunderbird-message-filters = ./message-filters;
+}
