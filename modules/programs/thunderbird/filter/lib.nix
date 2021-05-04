@@ -2,7 +2,7 @@
 
 with lib;
 
-let
+rec {
   
   filterFlags = {
     before-junk = 1;
@@ -22,15 +22,15 @@ let
       '');
   in d: concatStrings (flatten (concatMap mkLine d));
 
-  mkFilters = { mail, host, filters }@account:
+  mkFilters = account:
     let
-      filtersCfg = filters (msgFiltersLib account);
+      filtersCfg = account.thunderbird.filters (msgFiltersLib account);
 
-      mkAction = { action, actionValue }:
+      mkAction ={ action, actionValue }:
         ([{ inherit action; }]
           ++ (optional (actionValue != null) { inherit actionValue; }));
 
-      mkFilter = { name, enable, when, actions, condition }:
+      mkFilter = _: { name, enabled ? true, when, actions, condition, ... }:
         ([
           { inherit name; }
           { inherit enabled; }
@@ -39,15 +39,12 @@ let
           ++ [{ inherit condition; }]);
 
       msgFilterHeader = [ { version = 9; } { logging = false; } ];
-    in mkDat (msgFilterHeader ++ (concatMap mkFilter filtersCfg));
+    in mkDat (msgFilterHeader ++ (flatten (mapAttrsToList mkFilter filtersCfg)));
 
-in {
-  inherit filterFlags;
-
-  msgFiltersLib = { mail, host }:
+  msgFiltersLib = { address, imap, ... }:
     let
       # should work be enough for most mail addresses
-      escapedMail = replaceChars [ "@" ] [ "%40" ] mail;
+      escapedMail = replaceChars [ "@" ] [ "%40" ] address;
       conditions = op: cx: concatStringsSep " " (map (c: "${op} (${c})") cx);
       mkAction = action: actionValue: { inherit action actionValue; };
       mkFolder = pre: dir: "${pre}/${dir}";
@@ -55,7 +52,7 @@ in {
       mark-read = mkAction "Mark read" null;
       move-to = mkAction "Move to folder";
       copy-to = mkAction "Copy to folder";
-      imap-folder = mkFolder "imap://${escapedMail}@${host}";
+      imap-folder = mkFolder "imap://${escapedMail}@${imap.host}";
       local-folder = mkFolder "mailbox://nobody@Local%20Folders/";
       forward-to = mkAction "Forward";
       change-priority = mkAction "Change priority";

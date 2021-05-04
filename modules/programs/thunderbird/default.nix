@@ -90,7 +90,7 @@ in {
         };
 
         filters = mkOption {
-          type = types.functionTo (types.listOf (types.submodule import ./filter { inherit lib; }));
+          type = with types; functionTo (attrsOf (submodule (import ./filter { inherit lib; })));
           default = [ ];
           description = ''
             Attribute set of mail filters. The Order in this list is the execution Order.
@@ -118,7 +118,7 @@ in {
       };
 
       profiles = mkOption {
-        type = types.attrsOf (types.submodule (import ./thunderbird-profiles.nix lib));
+        type = types.attrsOf (types.submodule (import ./profiles.nix lib));
         default = { };
         description = ''
           profiles
@@ -175,11 +175,10 @@ in {
                           then elem profile.name acc.profiles
                           else profile.isDefault;
               in filter pred accounts;
-            mkFilters = account: {
-              "${profilePath}/ImapMail/${account.smtp.host}/msgFilterRules.dat" =
-                mkIf (builtins.hasAttr "filters" account) {
-                  text = mkFilters ({ inherit mail; } // account);
-                };
+            mkAccFilters = account: {
+              "${profilePath}/ImapMail/${account.imap.host}/msgFilterRules.dat" = {
+                text = (import ./filter/lib.nix { inherit lib; }).mkFilters account;
+              };
             };
           in [{
             "${profilePath}/.keep".text = "";
@@ -207,7 +206,7 @@ in {
               recursive = true;
               force = true;
             };
-          }] ++ (map mkFilters profileAccounts);
+          }] ++ (map mkAccFilters (filter (acc: acc ? thunderbird.filters) profileAccounts));
       in mkMerge ([{
         "${thunderbirdConfigPath}/profiles.ini" =
           mkIf (cfg.profiles != { }) { text = profilesIni; };

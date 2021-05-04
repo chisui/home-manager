@@ -1,10 +1,9 @@
 { lib, ... }:
 
-with lib; let
+with lib; 
+with (import ./lib.nix { inherit lib; });
 
-  inherit (import ./lib.nix { inherit lib; }) filterFlags;
-
-in { config, name, ... }: {
+{ config, name, ... }: {
   options = {
     name = mkOption {
       type = types.str;
