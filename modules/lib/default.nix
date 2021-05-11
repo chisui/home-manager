@@ -1,9 +1,9 @@
-{ lib }:
+args:
 
 rec {
   dag =
     let
-      d = import ./dag.nix { inherit lib; };
+      d = import ./dag.nix args;
     in
       {
         empty = d.emptyDag;
@@ -16,11 +16,12 @@ rec {
         entryBefore = d.dagEntryBefore;
       };
 
-  gvariant = import ./gvariant.nix { inherit lib; };
+  gvariant = import ./gvariant.nix args;
   maintainers = import ./maintainers.nix;
-  strings = import ./strings.nix { inherit lib; };
-  types = import ./types.nix { inherit dag gvariant lib; };
+  strings = import ./strings.nix args;
+  types = import ./types.nix (args // { inherit dag gvariant; });
 
-  shell = import ./shell.nix { inherit lib; };
-  zsh = import ./zsh.nix { inherit lib; };
+  shell = import ./shell.nix args;
+  zsh = import ./zsh.nix args;
+  mozilla = import ./mozilla.nix args;
 }

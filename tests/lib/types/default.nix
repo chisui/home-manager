@@ -4,4 +4,5 @@
   lib-types-list-or-dag-merge = ./list-or-dag-merge.nix;
 
   lib-types-gvariant-merge = ./gvariant-merge.nix;
+  lib-mozilla-user-js = ./mozilla-user-js.nix;
 }
