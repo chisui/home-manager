@@ -19,26 +19,18 @@ with config.lib.mozilla.prefs;
       };
     };
 
-    home.file = {
-      "fromNormalized".text = user-js.fromNormalized {
-        "a.num" = 1;
-        "a.text" = "asdf";
-        "b.bool" = true;
-      };
-      "fromAttrs".text = user-js.fromAttrs {
-        a = {
-          num = 1;
-          text = "asdf";
-          bool = true;
-        };
-      };
-    };
+    home.file = config.tested.moz;
     nmt.script = ''
-      sort -d -o expected.user.js ${./expected.user.js}
       for f in ${concatStringsSep " " (attrNames config.tested.moz)}
       do
         sort -d -o $f $out/tested/home-files/$f
-        assertFileContent $f expected.user.js
+        assertFileContent $f ${
+          pkgs.writeText "user.js" ''
+            user_pref('b.bool', true);
+            user_pref('a.num', 1);
+            user_pref('a.text', "asdf");
+          ''
+        }
       done
     '';
   };

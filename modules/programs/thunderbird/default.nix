@@ -91,7 +91,7 @@ in {
 
         filters = mkOption {
           type = with types; functionTo (attrsOf (submodule (import ./filter { inherit lib; })));
-          default = [ ];
+          default = x: {};
           description = ''
             Attribute set of mail filters. The Order in this list is the execution Order.
           '';
