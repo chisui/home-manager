@@ -32,13 +32,12 @@ with builtins;
           else [{ name = path; value = val; }];
       unPath = { name, value }: { inherit value; name = concatStringsSep "." name; };
       normalize = ps: listToAttrs (map unPath (normalize' [] ps));
-      mkEntry = f: k: v: "${f}('${k}', ${toJSON v});";
-      unlines = concatStringsSep "\n";
+      mkEntry = f: k: v: "${f}('${k}', ${toJSON v});\n";
     in {
       inherit normalize mkEntry;
       user-js = rec {
 
-        fromNormalized = ps: unlines (mapAttrsToList (mkEntry "user_pref") ps);
+        fromNormalized = ps: concatStrings (mapAttrsToList (mkEntry "user_pref") ps);
 
         fromAttrs = ps: fromNormalized (normalize ps);
 

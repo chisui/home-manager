@@ -6,31 +6,34 @@ with config.lib.mozilla.prefs;
   config = {
     tested.moz = {
       "fromNormalized".text = user-js.fromNormalized {
+        "b.bool" = true;
         "a.num" = 1;
         "a.text" = "asdf";
-        "b.bool" = true;
       };
       "fromAttrs".text = user-js.fromAttrs {
+        b.bool = true;
         a = {
           num = 1;
           text = "asdf";
-          bool = true;
         };
       };
     };
 
     home.file = config.tested.moz;
-    nmt.script = ''
+    nmt.script = let
+      expectedFile = pkgs.writeText "user.js" ''
+        user_pref('a.num', 1);
+        user_pref('a.text', "asdf");
+        user_pref('b.bool', true);
+      '';
+    in ''
+      ${pkgs.hexdump}/bin/hexdump ${expectedFile} > expected.hex
       for f in ${concatStringsSep " " (attrNames config.tested.moz)}
       do
         sort -d -o $f $out/tested/home-files/$f
-        assertFileContent $f ${
-          pkgs.writeText "user.js" ''
-            user_pref('b.bool', true);
-            user_pref('a.num', 1);
-            user_pref('a.text', "asdf");
-          ''
-        }
+        ${pkgs.hexdump}/bin/hexdump $f > $f.hex
+        diff -y $f.hex expected.hex
+        assertFileContent $f.hex expected.hex
       done
     '';
   };
