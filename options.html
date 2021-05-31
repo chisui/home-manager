@@ -482,8 +482,8 @@ configuration.
 }
 ''</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mbsync.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/mbsync.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.masterPattern"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.masterPattern"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.channels.&lt;name&gt;.masterPattern</code></a></span></dt><dd><p>IMAP4 patterns for which mailboxes on the remote mail server to sync.
-If <code class="literal">Patterns</code> are specified, <code class="literal">masterPattern</code>
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.farPattern"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.farPattern"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.channels.&lt;name&gt;.farPattern</code></a></span></dt><dd><p>IMAP4 patterns for which mailboxes on the remote mail server to sync.
+If <code class="literal">Patterns</code> are specified, <code class="literal">farPattern</code>
 is interpreted as a prefix which is not matched against the patterns,
 and is not affected by mailbox list overrides.
 </p><p>
@@ -504,8 +504,20 @@ name to mbsync on the command line.
         "‹name›"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mbsync.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/mbsync.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.nearPattern"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.nearPattern"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.channels.&lt;name&gt;.nearPattern</code></a></span></dt><dd><p>Name for where mail coming from the remote (far) mail server will end up
+locally. The mailbox specified by the far pattern will be placed in
+this directory.
+</p><p>
+If this is left as the default, then mbsync will default to the pattern
+<code class="literal">INBOX</code>.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "Sent"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mbsync.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/mbsync.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.patterns"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.patterns"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.channels.&lt;name&gt;.patterns</code></a></span></dt><dd><p>Instead of synchronizing <span class="emphasis"><em>just</em></span> the mailboxes that
-match the <code class="literal">masterPattern</code>, use it as a prefix which is
+match the <code class="literal">farPattern</code>, use it as a prefix which is
 not matched against the patterns, and is not affected by mailbox list
 overrides.
 </p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -520,18 +532,6 @@ overrides.
         "INBOX" 
         ]
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mbsync.nix#blob-path" target="_top">
-                    &lt;home-manager/modules/programs/mbsync.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.slavePattern"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.channels._name_.slavePattern"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.channels.&lt;name&gt;.slavePattern</code></a></span></dt><dd><p>Name for where mail coming from the master mail server will end up
-locally. The mailbox specified by the master's pattern will be placed
-in this directory.
-</p><p>
-If this is left as the default, then mbsync will default to the pattern
-<code class="literal">INBOX</code>.
-</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        ""
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        "Sent"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mbsync.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/mbsync.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.mbsync.groups._name_.name"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.mbsync.groups._name_.name"><code class="option">accounts.email.accounts.&lt;name&gt;.mbsync.groups.&lt;name&gt;.name</code></a></span></dt><dd><p>The name of this group for this account. These names are different than
@@ -1046,6 +1046,9 @@ for files created through the <code class="varname">text</code> option.
 generations. The script will be run
 <span class="emphasis"><em>after</em></span> the new files have been linked
 into place.
+</p><p>
+Note, this code is always run when <code class="literal">recursive</code> is
+enabled.
 </p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/files.nix#blob-path" target="_top">
@@ -2547,7 +2550,16 @@ this should be a wrapped Firefox package. For earlier state
 versions it should be an unwrapped Firefox package.
 </p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         pkgs.firefox
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/firefox.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">pkgs.firefox.override {
+  # See nixpkgs' firefox/wrapper.nix to check which options you can use
+  cfg = {
+    # Gnome shell native connector
+    enableGnomeExtensions = true;
+    # Tridactyl native connector
+    enableTridactylNative = true;
+  };
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/firefox.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/firefox.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.firefox.extensions"></a><a class="term" href="options.html#opt-programs.firefox.extensions"><code class="option">programs.firefox.extensions</code></a></span></dt><dd><p>List of Firefox add-on packages to install. Some
 pre-packaged add-ons are accessible from NUR,
@@ -2780,6 +2792,45 @@ initialisation.
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/fish.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.foot.enable"></a><a class="term" href="options.html#opt-programs.foot.enable"><code class="option">programs.foot.enable</code></a></span></dt><dd><p>Whether to enable Foot terminal.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/foot.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/foot.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.foot.package"></a><a class="term" href="options.html#opt-programs.foot.package"><code class="option">programs.foot.package</code></a></span></dt><dd><p>The foot package to install</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        pkgs.foot
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/foot.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/foot.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.foot.server.enable"></a><a class="term" href="options.html#opt-programs.foot.server.enable"><code class="option">programs.foot.server.enable</code></a></span></dt><dd><p>Whether to enable Foot terminal server.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/foot.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/foot.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.foot.settings"></a><a class="term" href="options.html#opt-programs.foot.settings"><code class="option">programs.foot.settings</code></a></span></dt><dd><p>Configuration written to
+<code class="filename">$XDG_CONFIG_HOME/foot/foot.ini</code>. See <a class="link" href="https://codeberg.org/dnkl/foot/src/branch/master/foot.ini" target="_top">https://codeberg.org/dnkl/foot/src/branch/master/foot.ini</a>
+for a list of available options.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of attribute set of INI atom (null, bool, int, float or string)ss</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  main = {
+    term = "xterm-256color";
+
+    font = "Fira Code:size=11";
+    dpi-aware = "yes";
+  };
+
+  mouse = {
+    hide-when-typing = "yes";
+  };
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/foot.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/foot.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.fzf.enable"></a><a class="term" href="options.html#opt-programs.fzf.enable"><code class="option">programs.fzf.enable</code></a></span></dt><dd><p>Whether to enable fzf - a command-line fuzzy finder.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -3354,6 +3405,8 @@ in the gpg scdaemon manpage:
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.gpg.settings"></a><a class="term" href="options.html#opt-programs.gpg.settings"><code class="option">programs.gpg.settings</code></a></span></dt><dd><p>GnuPG configuration options. Available options are described
 in the gpg manpage:
 <a class="link" href="https://gnupg.org/documentation/manpage.html" target="_top">https://gnupg.org/documentation/manpage.html</a>.
+</p><p>
+Note that lists are converted to duplicate keys.
 </p><p><span class="emphasis"><em>Type:</em></span> attribute set of string or boolean or list of stringss</p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
   no-comments = false;
   s2k-cipher-algo = "AES128";
@@ -3383,40 +3436,57 @@ attempted.
         true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.enableMouse"></a><a class="term" href="options.html#opt-programs.htop.enableMouse"><code class="option">programs.htop.enableMouse</code></a></span></dt><dd><p>Enable mouse support.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.enableMouse"></a><a class="term" href="options.html#opt-programs.htop.enableMouse"><code class="option">programs.htop.enableMouse</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.enable_mouse instead.
+
+Enable mouse support.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.accountGuestInCpuMeter"></a><a class="term" href="options.html#opt-programs.htop.accountGuestInCpuMeter"><code class="option">programs.htop.accountGuestInCpuMeter</code></a></span></dt><dd><p>Add guest time in CPU meter percentage.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.accountGuestInCpuMeter"></a><a class="term" href="options.html#opt-programs.htop.accountGuestInCpuMeter"><code class="option">programs.htop.accountGuestInCpuMeter</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.account_guest_in_cpu_meter instead.
+
+Add guest time in CPU meter percentage.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.colorScheme"></a><a class="term" href="options.html#opt-programs.htop.colorScheme"><code class="option">programs.htop.colorScheme</code></a></span></dt><dd><p>Which color scheme to use.</p><p><span class="emphasis"><em>Type:</em></span> one of 0, 1, 2, 3, 4, 5, 6</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        0
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.colorScheme"></a><a class="term" href="options.html#opt-programs.htop.colorScheme"><code class="option">programs.htop.colorScheme</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.color_scheme instead.
+
+Which color scheme to use.
+</p><p><span class="emphasis"><em>Type:</em></span> null or one of 0, 1, 2, 3, 4, 5, 6</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         6
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.cpuCountFromZero"></a><a class="term" href="options.html#opt-programs.htop.cpuCountFromZero"><code class="option">programs.htop.cpuCountFromZero</code></a></span></dt><dd><p>Count CPUs from 0 instead of 1.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.cpuCountFromZero"></a><a class="term" href="options.html#opt-programs.htop.cpuCountFromZero"><code class="option">programs.htop.cpuCountFromZero</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.cpu_count_from_zero instead.
+
+Count CPUs from 0 instead of 1.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.delay"></a><a class="term" href="options.html#opt-programs.htop.delay"><code class="option">programs.htop.delay</code></a></span></dt><dd><p>Set the delay between updates, in tenths of seconds.</p><p><span class="emphasis"><em>Type:</em></span> signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        15
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.delay"></a><a class="term" href="options.html#opt-programs.htop.delay"><code class="option">programs.htop.delay</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.delay instead.
+
+Set the delay between updates, in tenths of seconds.
+</p><p><span class="emphasis"><em>Type:</em></span> null or signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         2
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.detailedCpuTime"></a><a class="term" href="options.html#opt-programs.htop.detailedCpuTime"><code class="option">programs.htop.detailedCpuTime</code></a></span></dt><dd><p>Detailed CPU time (System/IO-Wait/Hard-IRQ/Soft-IRQ/Steal/Guest).</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.detailedCpuTime"></a><a class="term" href="options.html#opt-programs.htop.detailedCpuTime"><code class="option">programs.htop.detailedCpuTime</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.detailed_cpu_time instead.
+
+Detailed CPU time (System/IO-Wait/Hard-IRQ/Soft-IRQ/Steal/Guest).
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.fields"></a><a class="term" href="options.html#opt-programs.htop.fields"><code class="option">programs.htop.fields</code></a></span></dt><dd><p>Active fields shown in the table.</p><p><span class="emphasis"><em>Type:</em></span> list of one of "CGROUP", "CMAJFLT", "CMINFLT", "CNCLWB", "COMM", "CSTIME", "CTID", "CUTIME", "IO_PRIORITY", "IO_RATE", "IO_READ_RATE", "IO_WRITE_RATE", "MAJFLT", "MINFLT", "M_DRS", "M_DT", "M_LRS", "M_PSS", "M_PSSWP", "M_RESIDENT", "M_SHARE", "M_SIZE", "M_SWAP", "M_TRS", "NICE", "NLWP", "OOM", "PERCENT_CPU", "PERCENT_MEM", "PGRP", "PID", "PPID", "PRIORITY", "PROCESSOR", "RBYTES", "RCHAR", "SESSION", "STARTTIME", "STATE", "STIME", "ST_UID", "SYSCR", "SYSCW", "TGID", "TIME", "TPGID", "TTY_NR", "USER", "UTIME", "VPID", "VXID", "WBYTES", "WCHAR"s</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        
-        [
-        "PID" "USER" "PRIORITY" "NICE" "M_SIZE" "M_RESIDENT" "M_SHARE" "STATE" "PERCENT_CPU" "PERCENT_MEM" "TIME" "COMM" 
-        ]
-    
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.fields"></a><a class="term" href="options.html#opt-programs.htop.fields"><code class="option">programs.htop.fields</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.fields instead.
+
+Active fields shown in the table.
+</p><p><span class="emphasis"><em>Type:</em></span> null or list of one of "CGROUP", "CMAJFLT", "CMINFLT", "CNCLWB", "COMM", "CSTIME", "CTID", "CUTIME", "IO_PRIORITY", "IO_RATE", "IO_READ_RATE", "IO_WRITE_RATE", "MAJFLT", "MINFLT", "M_DRS", "M_DT", "M_LRS", "M_PSS", "M_PSSWP", "M_RESIDENT", "M_SHARE", "M_SIZE", "M_SWAP", "M_TRS", "NICE", "NLWP", "OOM", "PERCENT_CPU", "PERCENT_MEM", "PGRP", "PID", "PPID", "PRIORITY", "PROCESSOR", "RBYTES", "RCHAR", "SESSION", "STARTTIME", "STATE", "STIME", "ST_UID", "SYSCR", "SYSCW", "TGID", "TIME", "TPGID", "TTY_NR", "USER", "UTIME", "VPID", "VXID", "WBYTES", "WCHAR"s</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         
         [
@@ -3425,48 +3495,64 @@ attempted.
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.headerMargin"></a><a class="term" href="options.html#opt-programs.htop.headerMargin"><code class="option">programs.htop.headerMargin</code></a></span></dt><dd><p>Leave a margin around header.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.headerMargin"></a><a class="term" href="options.html#opt-programs.htop.headerMargin"><code class="option">programs.htop.headerMargin</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.header_margin instead.
+
+Leave a margin around header.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideKernelThreads"></a><a class="term" href="options.html#opt-programs.htop.hideKernelThreads"><code class="option">programs.htop.hideKernelThreads</code></a></span></dt><dd><p>Hide kernel threads.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideKernelThreads"></a><a class="term" href="options.html#opt-programs.htop.hideKernelThreads"><code class="option">programs.htop.hideKernelThreads</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.hide_kernel_threads instead.
+
+Hide kernel threads.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideThreads"></a><a class="term" href="options.html#opt-programs.htop.hideThreads"><code class="option">programs.htop.hideThreads</code></a></span></dt><dd><p>Hide threads.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideThreads"></a><a class="term" href="options.html#opt-programs.htop.hideThreads"><code class="option">programs.htop.hideThreads</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.hide_threads instead.
+
+Hide threads.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideUserlandThreads"></a><a class="term" href="options.html#opt-programs.htop.hideUserlandThreads"><code class="option">programs.htop.hideUserlandThreads</code></a></span></dt><dd><p>Hide userland process threads.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.hideUserlandThreads"></a><a class="term" href="options.html#opt-programs.htop.hideUserlandThreads"><code class="option">programs.htop.hideUserlandThreads</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.hide_userland_threads instead.
+
+Hide userland process threads.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightBaseName"></a><a class="term" href="options.html#opt-programs.htop.highlightBaseName"><code class="option">programs.htop.highlightBaseName</code></a></span></dt><dd><p>Highlight program <span class="quote">“<span class="quote">basename</span>”</span>.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightBaseName"></a><a class="term" href="options.html#opt-programs.htop.highlightBaseName"><code class="option">programs.htop.highlightBaseName</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.highlight_base_name instead.
+
+Highlight program <span class="quote">“<span class="quote">basename</span>”</span>.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightMegabytes"></a><a class="term" href="options.html#opt-programs.htop.highlightMegabytes"><code class="option">programs.htop.highlightMegabytes</code></a></span></dt><dd><p>Highlight large numbers in memory counters.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightMegabytes"></a><a class="term" href="options.html#opt-programs.htop.highlightMegabytes"><code class="option">programs.htop.highlightMegabytes</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.highlight_megabytes instead.
+
+Highlight large numbers in memory counters.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightThreads"></a><a class="term" href="options.html#opt-programs.htop.highlightThreads"><code class="option">programs.htop.highlightThreads</code></a></span></dt><dd><p>Display threads in a different color.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.highlightThreads"></a><a class="term" href="options.html#opt-programs.htop.highlightThreads"><code class="option">programs.htop.highlightThreads</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.highlight_threads instead.
+
+Display threads in a different color.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters"></a><a class="term" href="options.html#opt-programs.htop.meters"><code class="option">programs.htop.meters</code></a></span></dt><dd><p>Meters shown in the header.</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        
-        {
-        left = 
-        [
-        "AllCPUs" "Memory" "Swap" 
-        ]
-    ; right = 
-        [
-        "Tasks" "LoadAverage" "Uptime" 
-        ]
-    ; 
-        }
-    
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters"></a><a class="term" href="options.html#opt-programs.htop.meters"><code class="option">programs.htop.meters</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.left_meters,
+programs.htop.settings.left_meter_modes,
+programs.htop.settings.right_meters and
+programs.htop.settings.right_meter_modes instead. Or consider using
+lib.htop.leftMeters and lib.htop.rightMeters.
+
+Meters shown in the header.
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         
         {
@@ -3495,7 +3581,7 @@ attempted.
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.left"></a><a class="term" href="options.html#opt-programs.htop.meters.left"><code class="option">programs.htop.meters.left</code></a></span></dt><dd><p>Meters shown in the left header.</p><p><span class="emphasis"><em>Type:</em></span> list of submodule or one of "AllCPUs", "AllCPUs2", "AllCPUs4", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Hostname", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "Load", "LoadAverage", "Memory", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "Swap", "Tasks", "Uptime", "ZFSARC", "ZFSCARC" convertible to its</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.left"></a><a class="term" href="options.html#opt-programs.htop.meters.left"><code class="option">programs.htop.meters.left</code></a></span></dt><dd><p>Meters shown in the left header.</p><p><span class="emphasis"><em>Type:</em></span> list of submodule or one of "AllCPUs", "AllCPUs2", "AllCPUs4", "AllCPUs8", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Date", "DateTime", "DiskIO", "Hostname", "HugePages", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "LeftCPUs8", "Load", "LoadAverage", "Memory", "NetworkIO", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "RightCPUs8", "SELinux", "Swap", "Systemd", "Tasks", "Uptime", "ZFSARC", "ZFSCARC", "Zram" convertible to its</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         [
         "AllCPUs" "Memory" "Swap" 
@@ -3513,7 +3599,7 @@ attempted.
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.left._.kind"></a><a class="term" href="options.html#opt-programs.htop.meters.left._.kind"><code class="option">programs.htop.meters.left.*.kind</code></a></span></dt><dd><p>What kind of meter.</p><p><span class="emphasis"><em>Type:</em></span> one of "AllCPUs", "AllCPUs2", "AllCPUs4", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Hostname", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "Load", "LoadAverage", "Memory", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "Swap", "Tasks", "Uptime", "ZFSARC", "ZFSCARC"</p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.left._.kind"></a><a class="term" href="options.html#opt-programs.htop.meters.left._.kind"><code class="option">programs.htop.meters.left.*.kind</code></a></span></dt><dd><p>What kind of meter.</p><p><span class="emphasis"><em>Type:</em></span> one of "AllCPUs", "AllCPUs2", "AllCPUs4", "AllCPUs8", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Date", "DateTime", "DiskIO", "Hostname", "HugePages", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "LeftCPUs8", "Load", "LoadAverage", "Memory", "NetworkIO", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "RightCPUs8", "SELinux", "Swap", "Systemd", "Tasks", "Uptime", "ZFSARC", "ZFSCARC", "Zram"</p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         "AllCPUs"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
@@ -3521,7 +3607,7 @@ attempted.
         2
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.right"></a><a class="term" href="options.html#opt-programs.htop.meters.right"><code class="option">programs.htop.meters.right</code></a></span></dt><dd><p>Meters shown in the right header.</p><p><span class="emphasis"><em>Type:</em></span> list of submodule or one of "AllCPUs", "AllCPUs2", "AllCPUs4", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Hostname", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "Load", "LoadAverage", "Memory", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "Swap", "Tasks", "Uptime", "ZFSARC", "ZFSCARC" convertible to its</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.right"></a><a class="term" href="options.html#opt-programs.htop.meters.right"><code class="option">programs.htop.meters.right</code></a></span></dt><dd><p>Meters shown in the right header.</p><p><span class="emphasis"><em>Type:</em></span> list of submodule or one of "AllCPUs", "AllCPUs2", "AllCPUs4", "AllCPUs8", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Date", "DateTime", "DiskIO", "Hostname", "HugePages", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "LeftCPUs8", "Load", "LoadAverage", "Memory", "NetworkIO", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "RightCPUs8", "SELinux", "Swap", "Systemd", "Tasks", "Uptime", "ZFSARC", "ZFSCARC", "Zram" convertible to its</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         [
         "Tasks" "LoadAverage" "Uptime" 
@@ -3539,7 +3625,7 @@ attempted.
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.right._.kind"></a><a class="term" href="options.html#opt-programs.htop.meters.right._.kind"><code class="option">programs.htop.meters.right.*.kind</code></a></span></dt><dd><p>What kind of meter.</p><p><span class="emphasis"><em>Type:</em></span> one of "AllCPUs", "AllCPUs2", "AllCPUs4", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Hostname", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "Load", "LoadAverage", "Memory", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "Swap", "Tasks", "Uptime", "ZFSARC", "ZFSCARC"</p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.meters.right._.kind"></a><a class="term" href="options.html#opt-programs.htop.meters.right._.kind"><code class="option">programs.htop.meters.right.*.kind</code></a></span></dt><dd><p>What kind of meter.</p><p><span class="emphasis"><em>Type:</em></span> one of "AllCPUs", "AllCPUs2", "AllCPUs4", "AllCPUs8", "Battery", "Blank", "CPU", "CPU(1)", "CPU(2)", "CPU(3)", "CPU(4)", "CPU(5)", "CPU(6)", "CPU(7)", "CPU(8)", "CPUs", "Clock", "Date", "DateTime", "DiskIO", "Hostname", "HugePages", "LeftCPUs", "LeftCPUs2", "LeftCPUs4", "LeftCPUs8", "Load", "LoadAverage", "Memory", "NetworkIO", "PressureStallCPUSome", "PressureStallIOFull", "PressureStallIOSome", "PressureStallMemoryFull", "PressureStallMemorySome", "Right", "RightCPUs", "RightCPUs2", "RightCPUs4", "RightCPUs8", "SELinux", "Swap", "Systemd", "Tasks", "Uptime", "ZFSARC", "ZFSCARC", "Zram"</p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         "AllCPUs"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
@@ -3547,46 +3633,140 @@ attempted.
         2
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.shadowOtherUsers"></a><a class="term" href="options.html#opt-programs.htop.shadowOtherUsers"><code class="option">programs.htop.shadowOtherUsers</code></a></span></dt><dd><p>Shadow other users' processes.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.settings"></a><a class="term" href="options.html#opt-programs.htop.settings"><code class="option">programs.htop.settings</code></a></span></dt><dd><p>Configuration options to add to
+<code class="filename">~/.config/htop/htoprc</code>.
+
+This superseedes any other (deprecated) settings in this module.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        account_guest_in_cpu_meter = false; color_scheme = 0; cpu_count_from_zero = false; delay = 15; detailed_cpu_time = false; enable_mouse = true; fields = 
+        [
+        0 48 17 18 38 39 40 2 46 47 49 1 
+        ]
+    ; header_margin = true; hide_kernel_threads = true; hide_threads = false; hide_userland_threads = false; highlight_base_name = false; highlight_megabytes = true; highlight_threads = true; left_meter_modes = 
+        [
+        1 1 1 
+        ]
+    ; left_meters = 
+        [
+        "AllCPUs" "Memory" "Swap" 
+        ]
+    ; right_meter_modes = 
+        [
+        2 2 2 
+        ]
+    ; right_meters = 
+        [
+        "LoadAverage" "Tasks" "Uptime" 
+        ]
+    ; shadow_other_users = false; show_cpu_frequency = false; show_cpu_usage = false; show_program_path = true; show_thread_names = false; sort_direction = 1; sort_key = 46; tree_view = false; update_process_names = false; vim_mode = false; 
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  color_scheme = 6;
+  cpu_count_from_one = 0;
+  delay = 15;
+  fields = with config.lib.htop.fields; [
+    PID
+    USER
+    PRIORITY
+    NICE
+    M_SIZE
+    M_RESIDENT
+    M_SHARE
+    STATE
+    PERCENT_CPU
+    PERCENT_MEM
+    TIME
+    COMM
+  ];
+  highlight_base_name = 1;
+  highlight_megabytes = 1;
+  highlight_threads = 1;
+} // (with config.lib.htop; leftMeters {
+  AllCPUs2 = modes.Bar;
+  Memory = modes.Bar;
+  Swap = modes.Bar;
+  Zram = modes.Text;
+}) // (with config.lib.htop; rightMeters {
+  Tasks = modes.Text;
+  LoadAverage = modes.Text;
+  Uptime = modes.Text;
+  Systemd = modes.Text;
+})
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/htop.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.shadowOtherUsers"></a><a class="term" href="options.html#opt-programs.htop.shadowOtherUsers"><code class="option">programs.htop.shadowOtherUsers</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.shadow_other_users instead.
+
+Shadow other users' processes.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showCpuFrequency"></a><a class="term" href="options.html#opt-programs.htop.showCpuFrequency"><code class="option">programs.htop.showCpuFrequency</code></a></span></dt><dd><p>Show CPU frequency.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showCpuFrequency"></a><a class="term" href="options.html#opt-programs.htop.showCpuFrequency"><code class="option">programs.htop.showCpuFrequency</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.show_cpu_frequency instead.
+
+Show CPU frequency.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showCpuUsage"></a><a class="term" href="options.html#opt-programs.htop.showCpuUsage"><code class="option">programs.htop.showCpuUsage</code></a></span></dt><dd><p>Show CPU usage frequency.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showCpuUsage"></a><a class="term" href="options.html#opt-programs.htop.showCpuUsage"><code class="option">programs.htop.showCpuUsage</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.show_cpu_usage instead.
+
+Show CPU usage frequency.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showProgramPath"></a><a class="term" href="options.html#opt-programs.htop.showProgramPath"><code class="option">programs.htop.showProgramPath</code></a></span></dt><dd><p>Show program path.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showProgramPath"></a><a class="term" href="options.html#opt-programs.htop.showProgramPath"><code class="option">programs.htop.showProgramPath</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.show_program_path instead.
+
+Show program path.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showThreadNames"></a><a class="term" href="options.html#opt-programs.htop.showThreadNames"><code class="option">programs.htop.showThreadNames</code></a></span></dt><dd><p>Show custom thread names.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.showThreadNames"></a><a class="term" href="options.html#opt-programs.htop.showThreadNames"><code class="option">programs.htop.showThreadNames</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.show_thread_names instead.
+
+Show custom thread names.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.sortDescending"></a><a class="term" href="options.html#opt-programs.htop.sortDescending"><code class="option">programs.htop.sortDescending</code></a></span></dt><dd><p>Whether to sort descending or not.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.sortDescending"></a><a class="term" href="options.html#opt-programs.htop.sortDescending"><code class="option">programs.htop.sortDescending</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.sort_direction instead.
+
+Whether to sort descending or not.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.sortKey"></a><a class="term" href="options.html#opt-programs.htop.sortKey"><code class="option">programs.htop.sortKey</code></a></span></dt><dd><p>Which field to use for sorting.</p><p><span class="emphasis"><em>Type:</em></span> one of "CGROUP", "CMAJFLT", "CMINFLT", "CNCLWB", "COMM", "CSTIME", "CTID", "CUTIME", "IO_PRIORITY", "IO_RATE", "IO_READ_RATE", "IO_WRITE_RATE", "MAJFLT", "MINFLT", "M_DRS", "M_DT", "M_LRS", "M_PSS", "M_PSSWP", "M_RESIDENT", "M_SHARE", "M_SIZE", "M_SWAP", "M_TRS", "NICE", "NLWP", "OOM", "PERCENT_CPU", "PERCENT_MEM", "PGRP", "PID", "PPID", "PRIORITY", "PROCESSOR", "RBYTES", "RCHAR", "SESSION", "STARTTIME", "STATE", "STIME", "ST_UID", "SYSCR", "SYSCW", "TGID", "TIME", "TPGID", "TTY_NR", "USER", "UTIME", "VPID", "VXID", "WBYTES", "WCHAR"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        "PERCENT_CPU"
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.sortKey"></a><a class="term" href="options.html#opt-programs.htop.sortKey"><code class="option">programs.htop.sortKey</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.sort_key instead.
+
+Which field to use for sorting.
+</p><p><span class="emphasis"><em>Type:</em></span> null or one of "CGROUP", "CMAJFLT", "CMINFLT", "CNCLWB", "COMM", "CSTIME", "CTID", "CUTIME", "IO_PRIORITY", "IO_RATE", "IO_READ_RATE", "IO_WRITE_RATE", "MAJFLT", "MINFLT", "M_DRS", "M_DT", "M_LRS", "M_PSS", "M_PSSWP", "M_RESIDENT", "M_SHARE", "M_SIZE", "M_SWAP", "M_TRS", "NICE", "NLWP", "OOM", "PERCENT_CPU", "PERCENT_MEM", "PGRP", "PID", "PPID", "PRIORITY", "PROCESSOR", "RBYTES", "RCHAR", "SESSION", "STARTTIME", "STATE", "STIME", "ST_UID", "SYSCR", "SYSCW", "TGID", "TIME", "TPGID", "TTY_NR", "USER", "UTIME", "VPID", "VXID", "WBYTES", "WCHAR"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         "TIME"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.treeView"></a><a class="term" href="options.html#opt-programs.htop.treeView"><code class="option">programs.htop.treeView</code></a></span></dt><dd><p>Tree view.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.treeView"></a><a class="term" href="options.html#opt-programs.htop.treeView"><code class="option">programs.htop.treeView</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.tree_view instead.
+
+Tree view.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.updateProcessNames"></a><a class="term" href="options.html#opt-programs.htop.updateProcessNames"><code class="option">programs.htop.updateProcessNames</code></a></span></dt><dd><p>Update process names on every refresh.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.updateProcessNames"></a><a class="term" href="options.html#opt-programs.htop.updateProcessNames"><code class="option">programs.htop.updateProcessNames</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.update_process_names instead.
+
+Update process names on every refresh.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.vimMode"></a><a class="term" href="options.html#opt-programs.htop.vimMode"><code class="option">programs.htop.vimMode</code></a></span></dt><dd><p>Vim key bindings.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.vimMode"></a><a class="term" href="options.html#opt-programs.htop.vimMode"><code class="option">programs.htop.vimMode</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.vim_mode instead.
+
+Vim key bindings.
+</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.i3status.enable"></a><a class="term" href="options.html#opt-programs.i3status.enable"><code class="option">programs.i3status.enable</code></a></span></dt><dd><p>Whether to enable i3status.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -3832,7 +4012,7 @@ for block options.
     on_click = "pavucontrol --tab=3";
     mappings = {
      "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
-     "bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = ""
+     "bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = "";
     };
   }
 ];
@@ -3974,6 +4154,10 @@ for a list of available themes.
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/jq.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/jq.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.jq.package"></a><a class="term" href="options.html#opt-programs.jq.package"><code class="option">programs.jq.package</code></a></span></dt><dd><p>jq package to use.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        pkgs.jq
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/jq.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/jq.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.jq.colors"></a><a class="term" href="options.html#opt-programs.jq.colors"><code class="option">programs.jq.colors</code></a></span></dt><dd><p>The colors used in colored JSON output.</p><p>See <a class="link" href="https://stedolan.github.io/jq/manual/#Colors" target="_top">https://stedolan.github.io/jq/manual/#Colors</a>.
@@ -5086,6 +5270,11 @@ See <a class="link" href="https://marlam.de/msmtp/msmtprc.txt" target="_top">htt
                     &lt;home-manager/modules/programs/msmtp.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.msmtp.extraConfig"></a><a class="term" href="options.html#opt-programs.msmtp.extraConfig"><code class="option">programs.msmtp.extraConfig</code></a></span></dt><dd><p>Extra configuration lines to add to <code class="filename">~/.msmtprc</code>.
 See <a class="link" href="https://marlam.de/msmtp/msmtprc.txt" target="_top">https://marlam.de/msmtp/msmtprc.txt</a> for examples.
+</p><p>
+Note, if running msmtp fails with the error message "account default
+was already defined" then you probably have an account command here.
+Account commands should be placed in
+<a class="xref" href="options.html#opt-accounts.email.accounts._name_.msmtp.extraConfig"><code class="option">accounts.email.accounts.&lt;name&gt;.msmtp.extraConfig</code></a>.
 </p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/msmtp.nix#blob-path" target="_top">
@@ -5263,6 +5452,12 @@ csh  1  ^#!\s*/.*\b(csh|tcsh)\s*
         "index"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neomutt.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/neomutt.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neomutt.changeFolderWhenSourcingAccount"></a><a class="term" href="options.html#opt-programs.neomutt.changeFolderWhenSourcingAccount"><code class="option">programs.neomutt.changeFolderWhenSourcingAccount</code></a></span></dt><dd><p>Whether to enable changing the folder when sourcing an account.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neomutt.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/neomutt.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neomutt.checkStatsInterval"></a><a class="term" href="options.html#opt-programs.neomutt.checkStatsInterval"><code class="option">programs.neomutt.checkStatsInterval</code></a></span></dt><dd><p>Enable and set the interval of automatic mail check.</p><p><span class="emphasis"><em>Type:</em></span> null or signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -5408,12 +5603,6 @@ list of Python 3 packages required for your plugins to work.
         "ps: []"
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">(ps: with ps; [ python-language-server ])</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/neovim.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.extraPythonPackages"></a><a class="term" href="options.html#opt-programs.neovim.extraPythonPackages"><code class="option">programs.neovim.extraPythonPackages</code></a></span></dt><dd><p>A function in python.withPackages format, which returns a
-list of Python 2 packages required for your plugins to work.
-</p><p><span class="emphasis"><em>Type:</em></span> python packages in python.withPackages format or list of packages</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        "ps: []"
-      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">(ps: with ps; [ pandas jedi ])</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix#blob-path" target="_top">
-                    &lt;home-manager/modules/programs/neovim.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.plugins"></a><a class="term" href="options.html#opt-programs.neovim.plugins"><code class="option">programs.neovim.plugins</code></a></span></dt><dd><p>List of vim plugins to install optionally associated with
 configuration to be placed in init.vim.
 
@@ -5454,12 +5643,6 @@ This option is mutually exclusive with <code class="varname">configure</code>.
 use Node plugins.
 </p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix#blob-path" target="_top">
-                    &lt;home-manager/modules/programs/neovim.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.withPython"></a><a class="term" href="options.html#opt-programs.neovim.withPython"><code class="option">programs.neovim.withPython</code></a></span></dt><dd><p>Enable Python 2 provider. Set to <code class="literal">true</code> to
-use Python 2 plugins.
-</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/neovim.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.withPython3"></a><a class="term" href="options.html#opt-programs.neovim.withPython3"><code class="option">programs.neovim.withPython3</code></a></span></dt><dd><p>Enable Python 3 provider. Set to <code class="literal">true</code> to
@@ -5565,6 +5748,34 @@ use Python 3 plugins.
         "http://example.com"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/newsboat.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/newsboat.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.nix-index.enable"></a><a class="term" href="options.html#opt-programs.nix-index.enable"><code class="option">programs.nix-index.enable</code></a></span></dt><dd><p>Whether to enable nix-index, a file database for nixpkgs.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nix-index.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/nix-index.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.nix-index.enableBashIntegration"></a><a class="term" href="options.html#opt-programs.nix-index.enableBashIntegration"><code class="option">programs.nix-index.enableBashIntegration</code></a></span></dt><dd><p>Whether to enable Bash integration.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nix-index.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/nix-index.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.nix-index.enableFishIntegration"></a><a class="term" href="options.html#opt-programs.nix-index.enableFishIntegration"><code class="option">programs.nix-index.enableFishIntegration</code></a></span></dt><dd><p>Whether to enable Fish integration.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nix-index.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/nix-index.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.nix-index.enableZshIntegration"></a><a class="term" href="options.html#opt-programs.nix-index.enableZshIntegration"><code class="option">programs.nix-index.enableZshIntegration</code></a></span></dt><dd><p>Whether to enable Zsh integration.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nix-index.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/nix-index.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.nix-index.package"></a><a class="term" href="options.html#opt-programs.nix-index.package"><code class="option">programs.nix-index.package</code></a></span></dt><dd><p>Package providing the <span class="command"><strong>nix-index</strong></span> tool.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        pkgs.nix-index
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nix-index.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/nix-index.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.noti.enable"></a><a class="term" href="options.html#opt-programs.noti.enable"><code class="option">programs.noti.enable</code></a></span></dt><dd><p>Whether to enable Noti.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -6583,7 +6794,7 @@ substituting numeric shortcuts for files.</p><p><span class="emphasis"><em>Type:
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/scmpuff.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/scmpuff.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.scmpuff.package"></a><a class="term" href="options.html#opt-programs.scmpuff.package"><code class="option">programs.scmpuff.package</code></a></span></dt><dd><p>Package providing the <span class="command"><strong>scmpuff</strong></span> tool.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        pkgs.gitAndTools.scmpuff
+        pkgs.scmpuff
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/scmpuff.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/scmpuff.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.skim.enable"></a><a class="term" href="options.html#opt-programs.skim.enable"><code class="option">programs.skim.enable</code></a></span></dt><dd><p>Whether to enable skim - a command-line fuzzy finder.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -7868,7 +8079,7 @@ manually set any options not listed above.
                     &lt;home-manager/modules/programs/vscode.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.vscode.package"></a><a class="term" href="options.html#opt-programs.vscode.package"><code class="option">programs.vscode.package</code></a></span></dt><dd><p>Version of Visual Studio Code to install.
 </p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        <em class="replaceable"><code>(build of vscode-1.55.2)</code></em>
+        <em class="replaceable"><code>(build of vscode-1.56.2)</code></em>
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">pkgs.vscodium</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/vscode.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/vscode.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.vscode.extensions"></a><a class="term" href="options.html#opt-programs.vscode.extensions"><code class="option">programs.vscode.extensions</code></a></span></dt><dd><p>The extensions Visual Studio Code should be started with.
@@ -8383,7 +8594,9 @@ if the first character is a space.
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zsh.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.history.path"></a><a class="term" href="options.html#opt-programs.zsh.history.path"><code class="option">programs.zsh.history.path</code></a></span></dt><dd><p>History file location</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        ".zsh_history"
+        "$HOME/.zsh_history" if state version ≥ 20.03,
+"$ZDOTDIR/.zsh_history" otherwise
+
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">"${config.xdg.dataHome}/zsh/zsh_history"</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zsh.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.history.save"></a><a class="term" href="options.html#opt-programs.zsh.history.save"><code class="option">programs.zsh.history.save</code></a></span></dt><dd><p>Number of history lines to save.</p><p><span class="emphasis"><em>Type:</em></span> signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -8952,7 +9165,7 @@ but are substituted anywhere on a line.
         null
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         "adwaita-dark"
-      </code></p><p><span class="emphasis"><em>Related packages:</em></span> </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">pkgs.adwaita-qt</code> (adwaita-qt-1.1.4): A style to bend Qt applications to look like they belong into GNOME Shell</p></li><li class="listitem"><p><code class="literal">pkgs.libsForQt5.qtstyleplugins</code> (qtstyleplugins-unstable-2017-03-11): Additional style plugins for Qt5, including BB10, GTK, Cleanlooks, Motif, Plastique</p></li></ul></div><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/qt.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Related packages:</em></span> </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">pkgs.adwaita-qt</code> (adwaita-qt-1.3.0): A style to bend Qt applications to look like they belong into GNOME Shell</p></li><li class="listitem"><p><code class="literal">pkgs.libsForQt5.qtstyleplugins</code> (qtstyleplugins-unstable-2017-03-11): Additional style plugins for Qt5, including BB10, GTK, Cleanlooks, Motif, Plastique</p></li></ul></div><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/qt.nix#blob-path" target="_top">
                     &lt;home-manager/modules/misc/qt.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.barrier.client.enable"></a><a class="term" href="options.html#opt-services.barrier.client.enable"><code class="option">services.barrier.client.enable</code></a></span></dt><dd><p>Whether to enable Barrier Client daemon.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
@@ -9207,6 +9420,33 @@ else pkgs.emacs
         true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/emacs.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/emacs.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.etesync-dav.enable"></a><a class="term" href="options.html#opt-services.etesync-dav.enable"><code class="option">services.etesync-dav.enable</code></a></span></dt><dd><p>Whether to enable etesync-dav.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/etesync-dav.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/etesync-dav.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.etesync-dav.package"></a><a class="term" href="options.html#opt-services.etesync-dav.package"><code class="option">services.etesync-dav.package</code></a></span></dt><dd><p>The etesync-dav derivation to use.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "pkgs.etesync-dav"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/etesync-dav.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/etesync-dav.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.etesync-dav.serverUrl"></a><a class="term" href="options.html#opt-services.etesync-dav.serverUrl"><code class="option">services.etesync-dav.serverUrl</code></a></span></dt><dd><p>The URL to the etesync server.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "https://api.etesync.com/"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/etesync-dav.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/etesync-dav.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.etesync-dav.settings"></a><a class="term" href="options.html#opt-services.etesync-dav.settings"><code class="option">services.etesync-dav.settings</code></a></span></dt><dd><p>Settings for etesync-dav, passed as environment variables.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of string or signed integers</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  ETESYNC_LISTEN_ADDRESS = "localhost";
+  ETESYNC_LISTEN_PORT = 37385;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/etesync-dav.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/etesync-dav.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.flameshot.enable"></a><a class="term" href="options.html#opt-services.flameshot.enable"><code class="option">services.flameshot.enable</code></a></span></dt><dd><p>Whether to enable Flameshot.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -9585,7 +9825,25 @@ configuration file.
         
         }
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/kanshi.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">undocked = {
+  outputs = [
+    {
+      criteria = "eDP-1";
+    }
+  ];
+};
+docked = {
+  outputs = [
+    {
+      criteria = "eDP-1";
+    }
+    {
+      criteria = "Some Company ASDF 4242";
+      transform = "90";
+    }
+  ];
+};
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/kanshi.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/kanshi.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.kanshi.profiles._name_.exec"></a><a class="term" href="options.html#opt-services.kanshi.profiles._name_.exec"><code class="option">services.kanshi.profiles.&lt;name&gt;.exec</code></a></span></dt><dd><p>Command executed after the profile is succesfully applied.
 </p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -9984,6 +10242,10 @@ special characters including spaces may need to be escaped.
                     &lt;home-manager/modules/services/nextcloud-client.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.nextcloud-client.package"></a><a class="term" href="options.html#opt-services.nextcloud-client.package"><code class="option">services.nextcloud-client.package</code></a></span></dt><dd><p>The package to use for the nextcloud client binary.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         pkgs.nextcloud-client
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/nextcloud-client.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/nextcloud-client.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.nextcloud-client.startInBackground"></a><a class="term" href="options.html#opt-services.nextcloud-client.startInBackground"><code class="option">services.nextcloud-client.startInBackground</code></a></span></dt><dd><p>Whether to start the Nextcloud client in the background.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/nextcloud-client.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/nextcloud-client.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.owncloud-client.enable"></a><a class="term" href="options.html#opt-services.owncloud-client.enable"><code class="option">services.owncloud-client.enable</code></a></span></dt><dd><p>Whether to enable Owncloud Client.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -10697,13 +10959,6 @@ background "#cccccc"
     
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "-m 1" ]</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/sxhkd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/sxhkd.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.sxhkd.extraPath"></a><a class="term" href="options.html#opt-services.sxhkd.extraPath"><code class="option">services.sxhkd.extraPath</code></a></span></dt><dd><p>Additional <code class="envar">PATH</code> entries to search for commands.
-</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with ":"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        ""
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        "/home/some-user/bin:/extra/path/bin"
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/sxhkd.nix#blob-path" target="_top">
-                    &lt;home-manager/modules/services/sxhkd.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.sxhkd.keybindings"></a><a class="term" href="options.html#opt-services.sxhkd.keybindings"><code class="option">services.sxhkd.keybindings</code></a></span></dt><dd><p>An attribute set that assigns hotkeys to commands.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of null or strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
@@ -10722,8 +10977,12 @@ background "#cccccc"
         true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/syncthing.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/syncthing.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.syncthing.tray"></a><a class="term" href="options.html#opt-services.syncthing.tray"><code class="option">services.syncthing.tray</code></a></span></dt><dd><p>Whether to enable QSyncthingTray service.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        false
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.syncthing.tray"></a><a class="term" href="options.html#opt-services.syncthing.tray"><code class="option">services.syncthing.tray</code></a></span></dt><dd><p>Syncthing tray service configuration.</p><p><span class="emphasis"><em>Type:</em></span> boolean or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        enable = false; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/syncthing.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/syncthing.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.taffybar.enable"></a><a class="term" href="options.html#opt-services.taffybar.enable"><code class="option">services.taffybar.enable</code></a></span></dt><dd><p>Whether to enable Taffybar.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -11406,21 +11665,6 @@ GNU/Linux distributions other than NixOS.
         true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path" target="_top">
                     &lt;home-manager/modules/targets/generic-linux.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-targets.genericLinux.extraXdgDataDirs"></a><a class="term" href="options.html#opt-targets.genericLinux.extraXdgDataDirs"><code class="option">targets.genericLinux.extraXdgDataDirs</code></a></span></dt><dd><p>List of directory names to add to <code class="envar">XDG_DATA_DIRS</code>.
-</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        
-        [
-        
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        
-        [
-        "/usr/share" "/usr/local/share" 
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path" target="_top">
-                    &lt;home-manager/modules/targets/generic-linux.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.enable"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.enable"><code class="option">wayland.windowManager.sway.enable</code></a></span></dt><dd><p>Whether to enable sway wayland compositor.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -11460,15 +11704,7 @@ on criteria.
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars"><code class="option">wayland.windowManager.sway.config.bars</code></a></span></dt><dd><p>Sway bars settings blocks. Set to empty list to remove bars completely.
 </p><p><span class="emphasis"><em>Type:</em></span> list of submodules</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        
-        [
-        
-        {
-        
-        }
-     
-        ]
-    
+        see code
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors"><code class="option">wayland.windowManager.sway.config.bars.*.colors</code></a></span></dt><dd><p>Bar color settings. All color classes can be specified using submodules
@@ -11486,57 +11722,85 @@ See <a class="link" href="https://i3wm.org/docs/userguide.html#_colors" target="
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.activeWorkspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.activeWorkspace"><code class="option">wayland.windowManager.sway.config.bars.*.colors.activeWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace is active.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#5f676a"; border = "#333333"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.background"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.background"><code class="option">wayland.windowManager.sway.config.bars.*.colors.background</code></a></span></dt><dd><p>Background color of the bar.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #000000 for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.background"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.background"><code class="option">wayland.windowManager.sway.config.bars.*.colors.background</code></a></span></dt><dd><p>Background color of the bar.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#000000"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.bindingMode"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.bindingMode"><code class="option">wayland.windowManager.sway.config.bars.*.colors.bindingMode</code></a></span></dt><dd><p>Border, background and text color for the binding mode indicator</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.bindingMode"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.bindingMode"><code class="option">wayland.windowManager.sway.config.bars.*.colors.bindingMode</code></a></span></dt><dd><p>Border, background and text color for the binding mode indicator</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#900000"; border = "#2f343a"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.focusedWorkspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.focusedWorkspace"><code class="option">wayland.windowManager.sway.config.bars.*.colors.focusedWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace has focus.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#285577"; border = "#4c7899"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.inactiveWorkspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.inactiveWorkspace"><code class="option">wayland.windowManager.sway.config.bars.*.colors.inactiveWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace does not
 have focus and is not active.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#222222"; border = "#333333"; text = "#888888"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.separator"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.separator"><code class="option">wayland.windowManager.sway.config.bars.*.colors.separator</code></a></span></dt><dd><p>Text color to be used for the separator.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #666666 for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.separator"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.separator"><code class="option">wayland.windowManager.sway.config.bars.*.colors.separator</code></a></span></dt><dd><p>Text color to be used for the separator.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#666666"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.statusline"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.statusline"><code class="option">wayland.windowManager.sway.config.bars.*.colors.statusline</code></a></span></dt><dd><p>Text color to be used for the statusline.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #ffffff for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.statusline"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.statusline"><code class="option">wayland.windowManager.sway.config.bars.*.colors.statusline</code></a></span></dt><dd><p>Text color to be used for the statusline.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#ffffff"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.colors.urgentWorkspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.colors.urgentWorkspace"><code class="option">wayland.windowManager.sway.config.bars.*.colors.urgentWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace contains
 a window with the urgency hint set.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#900000"; border = "#2f343a"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.command"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.command"><code class="option">wayland.windowManager.sway.config.bars.*.command</code></a></span></dt><dd><p>Command that will be used to start a bar.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -11549,26 +11813,24 @@ null for state version ≥ 20.09
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.fonts"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.fonts"><code class="option">wayland.windowManager.sway.config.bars.*.fonts</code></a></span></dt><dd><p>Font list used for window titles. Only FreeType fonts are supported.
-The order here is important (e.g. icons font should go before the one used for text).
-</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.fonts"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.fonts"><code class="option">wayland.windowManager.sway.config.bars.*.fonts</code></a></span></dt><dd><p>Font configuration for this bar.</p><p><span class="emphasis"><em>Type:</em></span> list of strings or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
-        [
-        "monospace 8" 
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        {
         
-        [
-        "FontAwesome 10" "Terminus 10" 
-        ]
+        }
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+  style = "Bold Semi-Condensed";
+  size = 11.0;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.hiddenState"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.hiddenState"><code class="option">wayland.windowManager.sway.config.bars.*.hiddenState</code></a></span></dt><dd><p>The default bar mode when 'bar.mode' == 'hide'.</p><p><span class="emphasis"><em>Type:</em></span> one of "hide", "show"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        hide for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.hiddenState"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.hiddenState"><code class="option">wayland.windowManager.sway.config.bars.*.hiddenState</code></a></span></dt><dd><p>The default bar mode when 'bar.mode' == 'hide'.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "hide", "show"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "hide"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.id"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.id"><code class="option">wayland.windowManager.sway.config.bars.*.id</code></a></span></dt><dd><p>Specifies the bar ID for the configured bar instance.
@@ -11578,40 +11840,46 @@ to the position of the embedding bar block in the config file.
         null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.mode"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.mode"><code class="option">wayland.windowManager.sway.config.bars.*.mode</code></a></span></dt><dd><p>Bar visibility mode.</p><p><span class="emphasis"><em>Type:</em></span> one of "dock", "hide", "invisible"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        dock for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.mode"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.mode"><code class="option">wayland.windowManager.sway.config.bars.*.mode</code></a></span></dt><dd><p>Bar visibility mode.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "dock", "hide", "invisible"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "dock"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.position"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.position"><code class="option">wayland.windowManager.sway.config.bars.*.position</code></a></span></dt><dd><p>The edge of the screen swaybar should show up.</p><p><span class="emphasis"><em>Type:</em></span> one of "top", "bottom"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        bottom for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.position"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.position"><code class="option">wayland.windowManager.sway.config.bars.*.position</code></a></span></dt><dd><p>The edge of the screen swaybar should show up.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "top", "bottom"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "bottom"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.statusCommand"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.statusCommand"><code class="option">wayland.windowManager.sway.config.bars.*.statusCommand</code></a></span></dt><dd><p>Command that will be used to get status lines.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        "\${pkgs.i3status}/bin/i3status"
+        null for state version ≥ 20.09, as example otherwise
+
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        "i3status"
+        "\${pkgs.i3status}/bin/i3status"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.trayOutput"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.trayOutput"><code class="option">wayland.windowManager.sway.config.bars.*.trayOutput</code></a></span></dt><dd><p>Where to output tray.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        primary for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.trayOutput"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.trayOutput"><code class="option">wayland.windowManager.sway.config.bars.*.trayOutput</code></a></span></dt><dd><p>Where to output tray.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "primary"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.workspaceButtons"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.workspaceButtons"><code class="option">wayland.windowManager.sway.config.bars.*.workspaceButtons</code></a></span></dt><dd><p>Whether workspace buttons should be shown or not.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.workspaceButtons"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.workspaceButtons"><code class="option">wayland.windowManager.sway.config.bars.*.workspaceButtons</code></a></span></dt><dd><p>Whether workspace buttons should be shown or not.</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.workspaceNumbers"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.workspaceNumbers"><code class="option">wayland.windowManager.sway.config.bars.*.workspaceNumbers</code></a></span></dt><dd><p>Whether workspace numbers should be displayed within the workspace buttons.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.workspaceNumbers"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.workspaceNumbers"><code class="option">wayland.windowManager.sway.config.bars.*.workspaceNumbers</code></a></span></dt><dd><p>Whether workspace numbers should be displayed within the workspace buttons.</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bindkeysToCode"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bindkeysToCode"><code class="option">wayland.windowManager.sway.config.bindkeysToCode</code></a></span></dt><dd><p>Whether to make use of <code class="option">--to-code</code> in keybindings.
@@ -11683,6 +11951,14 @@ contents (when restoring layouts). Border and indicator are ignored.
         background = "#900000"; border = "#2f343a"; childBorder = "#900000"; indicator = "#900000"; text = "#ffffff"; 
         }
     
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.defaultWorkspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.defaultWorkspace"><code class="option">wayland.windowManager.sway.config.defaultWorkspace</code></a></span></dt><dd><p>The default workspace to show when sway is launched.
+This must to correspond to the value of the keybinding of the default workspace.
+</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "workspace number 9"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.down"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.down"><code class="option">wayland.windowManager.sway.config.down</code></a></span></dt><dd><p>Home row direction key for moving down.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -11767,21 +12043,18 @@ See <a class="link" href="https://i3wm.org/docs/userguide.html#focus_on_window_a
         "none"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.fonts"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.fonts"><code class="option">wayland.windowManager.sway.config.fonts</code></a></span></dt><dd><p>Font list used for window titles. Only FreeType fonts are supported.
-The order here is important (e.g. icons font should go before the one used for text).
-</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.fonts"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.fonts"><code class="option">wayland.windowManager.sway.config.fonts</code></a></span></dt><dd><p>Font configuration for window titles, nagbar...</p><p><span class="emphasis"><em>Type:</em></span> list of strings or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
-        [
-        "monospace 8" 
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        {
         
-        [
-        "FontAwesome 10" "Terminus 10" 
-        ]
+        }
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+  style = "Bold Semi-Condensed";
+  size = 11.0;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.gaps"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.gaps"><code class="option">wayland.windowManager.sway.config.gaps</code></a></span></dt><dd><p>Gaps related settings.
 </p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -12198,6 +12471,9 @@ for files created through the <code class="varname">text</code> option.
 generations. The script will be run
 <span class="emphasis"><em>after</em></span> the new files have been linked
 into place.
+</p><p>
+Note, this code is always run when <code class="literal">recursive</code> is
+enabled.
 </p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg.nix#blob-path" target="_top">
@@ -12260,6 +12536,9 @@ for files created through the <code class="varname">text</code> option.
 generations. The script will be run
 <span class="emphasis"><em>after</em></span> the new files have been linked
 into place.
+</p><p>
+Note, this code is always run when <code class="literal">recursive</code> is
+enabled.
 </p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg.nix#blob-path" target="_top">
@@ -12367,6 +12646,26 @@ the list is attempted, and so on.
 }
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-mime-apps.nix#blob-path" target="_top">
                     &lt;home-manager/modules/misc/xdg-mime-apps.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.systemDirs.config"></a><a class="term" href="options.html#opt-xdg.systemDirs.config"><code class="option">xdg.systemDirs.config</code></a></span></dt><dd><p>Directory names to add to <code class="envar">XDG_CONFIG_DIRS</code>
+in the user session.
+</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "/etc/xdg" ]</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-system-dirs.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-system-dirs.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.systemDirs.data"></a><a class="term" href="options.html#opt-xdg.systemDirs.data"><code class="option">xdg.systemDirs.data</code></a></span></dt><dd><p>Directory names to add to <code class="envar">XDG_DATA_DIRS</code>
+in the user session.
+</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "/usr/share" "/usr/local/share" ]</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-system-dirs.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-system-dirs.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.userDirs.enable"></a><a class="term" href="options.html#opt-xdg.userDirs.enable"><code class="option">xdg.userDirs.enable</code></a></span></dt><dd><p>Whether to manage <code class="filename">$XDG_CONFIG_HOME/user-dirs.dirs</code>.
 </p><p>
 The generated file is read-only.
@@ -12789,15 +13088,7 @@ on criteria.
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars"><code class="option">xsession.windowManager.i3.config.bars</code></a></span></dt><dd><p>i3 bars settings blocks. Set to empty list to remove bars completely.
 </p><p><span class="emphasis"><em>Type:</em></span> list of submodules</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        
-        [
-        
-        {
-        
-        }
-     
-        ]
-    
+        see code
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors"><code class="option">xsession.windowManager.i3.config.bars.*.colors</code></a></span></dt><dd><p>Bar color settings. All color classes can be specified using submodules
@@ -12815,57 +13106,85 @@ See <a class="link" href="https://i3wm.org/docs/userguide.html#_colors" target="
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.activeWorkspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.activeWorkspace"><code class="option">xsession.windowManager.i3.config.bars.*.colors.activeWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace is active.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#5f676a"; border = "#333333"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.background"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.background"><code class="option">xsession.windowManager.i3.config.bars.*.colors.background</code></a></span></dt><dd><p>Background color of the bar.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #000000 for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.background"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.background"><code class="option">xsession.windowManager.i3.config.bars.*.colors.background</code></a></span></dt><dd><p>Background color of the bar.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#000000"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.bindingMode"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.bindingMode"><code class="option">xsession.windowManager.i3.config.bars.*.colors.bindingMode</code></a></span></dt><dd><p>Border, background and text color for the binding mode indicator</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.bindingMode"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.bindingMode"><code class="option">xsession.windowManager.i3.config.bars.*.colors.bindingMode</code></a></span></dt><dd><p>Border, background and text color for the binding mode indicator</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#900000"; border = "#2f343a"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.focusedWorkspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.focusedWorkspace"><code class="option">xsession.windowManager.i3.config.bars.*.colors.focusedWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace has focus.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#285577"; border = "#4c7899"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.inactiveWorkspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.inactiveWorkspace"><code class="option">xsession.windowManager.i3.config.bars.*.colors.inactiveWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace does not
 have focus and is not active.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#222222"; border = "#333333"; text = "#888888"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.separator"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.separator"><code class="option">xsession.windowManager.i3.config.bars.*.colors.separator</code></a></span></dt><dd><p>Text color to be used for the separator.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #666666 for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.separator"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.separator"><code class="option">xsession.windowManager.i3.config.bars.*.colors.separator</code></a></span></dt><dd><p>Text color to be used for the separator.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#666666"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.statusline"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.statusline"><code class="option">xsession.windowManager.i3.config.bars.*.colors.statusline</code></a></span></dt><dd><p>Text color to be used for the statusline.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        #ffffff for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.statusline"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.statusline"><code class="option">xsession.windowManager.i3.config.bars.*.colors.statusline</code></a></span></dt><dd><p>Text color to be used for the statusline.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "#ffffff"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.colors.urgentWorkspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.colors.urgentWorkspace"><code class="option">xsession.windowManager.i3.config.bars.*.colors.urgentWorkspace</code></a></span></dt><dd><p>Border, background and text color for a workspace button when the workspace contains
 a window with the urgency hint set.
-</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+</p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        
+        {
+        background = "#900000"; border = "#2f343a"; text = "#ffffff"; 
+        }
+    
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.command"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.command"><code class="option">xsession.windowManager.i3.config.bars.*.command</code></a></span></dt><dd><p>Command that will be used to start a bar.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -12878,26 +13197,24 @@ null for state version ≥ 20.09
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.fonts"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.fonts"><code class="option">xsession.windowManager.i3.config.bars.*.fonts</code></a></span></dt><dd><p>Font list used for window titles. Only FreeType fonts are supported.
-The order here is important (e.g. icons font should go before the one used for text).
-</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.fonts"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.fonts"><code class="option">xsession.windowManager.i3.config.bars.*.fonts</code></a></span></dt><dd><p>Font configuration for this bar.</p><p><span class="emphasis"><em>Type:</em></span> list of strings or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
-        [
-        "monospace 8" 
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        {
         
-        [
-        "FontAwesome 10" "Terminus 10" 
-        ]
+        }
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+  style = "Bold Semi-Condensed";
+  size = 11.0;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.hiddenState"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.hiddenState"><code class="option">xsession.windowManager.i3.config.bars.*.hiddenState</code></a></span></dt><dd><p>The default bar mode when 'bar.mode' == 'hide'.</p><p><span class="emphasis"><em>Type:</em></span> one of "hide", "show"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        hide for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.hiddenState"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.hiddenState"><code class="option">xsession.windowManager.i3.config.bars.*.hiddenState</code></a></span></dt><dd><p>The default bar mode when 'bar.mode' == 'hide'.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "hide", "show"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "hide"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.id"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.id"><code class="option">xsession.windowManager.i3.config.bars.*.id</code></a></span></dt><dd><p>Specifies the bar ID for the configured bar instance.
@@ -12907,40 +13224,46 @@ to the position of the embedding bar block in the config file.
         null
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.mode"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.mode"><code class="option">xsession.windowManager.i3.config.bars.*.mode</code></a></span></dt><dd><p>Bar visibility mode.</p><p><span class="emphasis"><em>Type:</em></span> one of "dock", "hide", "invisible"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        dock for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.mode"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.mode"><code class="option">xsession.windowManager.i3.config.bars.*.mode</code></a></span></dt><dd><p>Bar visibility mode.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "dock", "hide", "invisible"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "dock"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.position"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.position"><code class="option">xsession.windowManager.i3.config.bars.*.position</code></a></span></dt><dd><p>The edge of the screen i3bar should show up.</p><p><span class="emphasis"><em>Type:</em></span> one of "top", "bottom"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        bottom for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.position"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.position"><code class="option">xsession.windowManager.i3.config.bars.*.position</code></a></span></dt><dd><p>The edge of the screen i3bar should show up.</p><p><span class="emphasis"><em>Type:</em></span> null or one of "top", "bottom"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "bottom"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.statusCommand"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.statusCommand"><code class="option">xsession.windowManager.i3.config.bars.*.statusCommand</code></a></span></dt><dd><p>Command that will be used to get status lines.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        "\${pkgs.i3status}/bin/i3status"
+        null for state version ≥ 20.09, as example otherwise
+
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        "i3status"
+        "\${pkgs.i3status}/bin/i3status"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.trayOutput"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.trayOutput"><code class="option">xsession.windowManager.i3.config.bars.*.trayOutput</code></a></span></dt><dd><p>Where to output tray.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        primary for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.trayOutput"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.trayOutput"><code class="option">xsession.windowManager.i3.config.bars.*.trayOutput</code></a></span></dt><dd><p>Where to output tray.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "primary"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.workspaceButtons"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.workspaceButtons"><code class="option">xsession.windowManager.i3.config.bars.*.workspaceButtons</code></a></span></dt><dd><p>Whether workspace buttons should be shown or not.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.workspaceButtons"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.workspaceButtons"><code class="option">xsession.windowManager.i3.config.bars.*.workspaceButtons</code></a></span></dt><dd><p>Whether workspace buttons should be shown or not.</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.workspaceNumbers"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.workspaceNumbers"><code class="option">xsession.windowManager.i3.config.bars.*.workspaceNumbers</code></a></span></dt><dd><p>Whether workspace numbers should be displayed within the workspace buttons.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        See code for state version &lt; 20.09,
-null for state version ≥ 20.09
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.bars._.workspaceNumbers"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.bars._.workspaceNumbers"><code class="option">xsession.windowManager.i3.config.bars.*.workspaceNumbers</code></a></span></dt><dd><p>Whether workspace numbers should be displayed within the workspace buttons.</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null for state version ≥ 20.09, as example otherwise
 
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.colors"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.colors"><code class="option">xsession.windowManager.i3.config.colors</code></a></span></dt><dd><p>Color settings. All color classes can be specified using submodules
@@ -13005,6 +13328,14 @@ contents (when restoring layouts). Border and indicator are ignored.
         background = "#900000"; border = "#2f343a"; childBorder = "#900000"; indicator = "#900000"; text = "#ffffff"; 
         }
     
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.defaultWorkspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.defaultWorkspace"><code class="option">xsession.windowManager.i3.config.defaultWorkspace</code></a></span></dt><dd><p>The default workspace to show when i3 is launched.
+This must to correspond to the value of the keybinding of the default workspace.
+</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "workspace number 9"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.floating"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.floating"><code class="option">xsession.windowManager.i3.config.floating</code></a></span></dt><dd><p>Floating window settings.</p><p><span class="emphasis"><em>Type:</em></span> submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -13085,21 +13416,18 @@ See <a class="link" href="https://i3wm.org/docs/userguide.html#focus_on_window_a
         "none"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.fonts"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.fonts"><code class="option">xsession.windowManager.i3.config.fonts</code></a></span></dt><dd><p>Font list used for window titles. Only FreeType fonts are supported.
-The order here is important (e.g. icons font should go before the one used for text).
-</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.fonts"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.fonts"><code class="option">xsession.windowManager.i3.config.fonts</code></a></span></dt><dd><p>Font configuration for window titles, nagbar...</p><p><span class="emphasis"><em>Type:</em></span> list of strings or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
-        [
-        "monospace 8" 
-        ]
-    
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        {
         
-        [
-        "FontAwesome 10" "Terminus 10" 
-        ]
+        }
     
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+  style = "Bold Semi-Condensed";
+  size = 11.0;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.gaps"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.gaps"><code class="option">xsession.windowManager.i3.config.gaps</code></a></span></dt><dd><p>i3Gaps related settings. The i3-gaps package must be used for these features to work.
 </p><p><span class="emphasis"><em>Type:</em></span> null or submodule</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
