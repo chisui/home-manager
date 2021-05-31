@@ -4,32 +4,24 @@ with lib;
 
 {
   config = {
-    accounts.email.accounts.testMail = {
-      primary = true;
+    accounts.email.accounts.testUser = {
+      thunderbird.enable = true;
       userName = "test-user";
-      realName = "Testi Mac Testface";
-      address = "test@somewhere.org";
-      smtp.host = "smtp.somewhere.org";
-      imap.host = "imap.somewhere.org";
-      thunderbird = {
-        enable = true;
-        filters = fx:
-          with fx; {
-            "some filter" = {
-              condition = all [ "subject,contains,hello" ];
-              actions = [ mark-read (move-to (imap-folder "some/folder")) ];
-            };
-          };
-      };
+      smtp = {
+        host = "smpt.somewhere.org";
+      }; 
+      imap = {
+        host = "imap.somewhere.org";
+      }; 
     };
     programs.thunderbird = {
       enable = true;
-      profiles.testProfile.isDefault = true;
+      profiles.testUser.isDefault = true;
     };
 
     nmt.script = ''
       assertFileContent \
-        home-files/.thunderbird/testProfile/ImapMail/imap.somewhere.org/msgFilterRules.dat \
+        home-files/.thunderbird/testUser/ImapMail/mail.somewhere.net/msgFilterRules.dat \
         ${./message-filters-expected.dat}
     '';
   };
