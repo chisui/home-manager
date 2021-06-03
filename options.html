@@ -3646,19 +3646,19 @@ This superseedes any other (deprecated) settings in this module.
         ]
     ; header_margin = true; hide_kernel_threads = true; hide_threads = false; hide_userland_threads = false; highlight_base_name = false; highlight_megabytes = true; highlight_threads = true; left_meter_modes = 
         [
-        1 1 1 
+        1 1 1 2 
         ]
     ; left_meters = 
         [
-        "AllCPUs" "Memory" "Swap" 
+        "AllCPUs2" "Memory" "Swap" "Zram" 
         ]
     ; right_meter_modes = 
         [
-        2 2 2 
+        2 2 2 2 
         ]
     ; right_meters = 
         [
-        "LoadAverage" "Tasks" "Uptime" 
+        "Tasks" "LoadAverage" "Uptime" "Systemd" 
         ]
     ; shadow_other_users = false; show_cpu_frequency = false; show_cpu_usage = false; show_program_path = true; show_thread_names = false; sort_direction = 1; sort_key = 46; tree_view = false; update_process_names = false; vim_mode = false; 
         }
@@ -3684,17 +3684,17 @@ This superseedes any other (deprecated) settings in this module.
   highlight_base_name = 1;
   highlight_megabytes = 1;
   highlight_threads = 1;
-} // (with config.lib.htop; leftMeters {
-  AllCPUs2 = modes.Bar;
-  Memory = modes.Bar;
-  Swap = modes.Bar;
-  Zram = modes.Text;
-}) // (with config.lib.htop; rightMeters {
-  Tasks = modes.Text;
-  LoadAverage = modes.Text;
-  Uptime = modes.Text;
-  Systemd = modes.Text;
-})
+} // (with config.lib.htop; leftMeters [
+  (bar "AllCPUs2")
+  (bar "Memory")
+  (bar "Swap")
+  (text "Zram")
+]) // (with config.lib.htop; rightMeters [
+  (text "Tasks")
+  (text "LoadAverage")
+  (text "Uptime")
+  (text "Systemd")
+]);
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/htop.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/htop.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.htop.shadowOtherUsers"></a><a class="term" href="options.html#opt-programs.htop.shadowOtherUsers"><code class="option">programs.htop.shadowOtherUsers</code></a></span></dt><dd><p>Deprecated. Please use programs.htop.settings.shadow_other_users instead.
@@ -3928,8 +3928,8 @@ for options.
      {
        block = "memory";
        display_type = "memory";
-       format_mem = "{Mup}%";
-       format_swap = "{SUp}%";
+       format_mem = "{mem_used_percents}";
+       format_swap = "{swap_used_percents}";
      }
      {
        block = "cpu";
@@ -3974,7 +3974,7 @@ for block options.
         }
      
         {
-        block = "memory"; display_type = "memory"; format_mem = "{Mup}%"; format_swap = "{SUp}%"; 
+        block = "memory"; display_type = "memory"; format_mem = "{mem_used_percents}"; format_swap = "{swap_used_percents}"; 
         }
      
         {
@@ -12210,6 +12210,30 @@ start.
         "tabbed"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.workspaceOutputAssign"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.workspaceOutputAssign"><code class="option">wayland.windowManager.sway.config.workspaceOutputAssign</code></a></span></dt><dd><p>Assign workspaces to outputs.</p><p><span class="emphasis"><em>Type:</em></span> list of submodules</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.workspaceOutputAssign._.output"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.workspaceOutputAssign._.output"><code class="option">wayland.windowManager.sway.config.workspaceOutputAssign.*.output</code></a></span></dt><dd><p>Name of the output from <span class="command"><strong>
+  swaymsg -t get_outputs
+</strong></span>.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "eDP"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.workspaceOutputAssign._.workspace"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.workspaceOutputAssign._.workspace"><code class="option">wayland.windowManager.sway.config.workspaceOutputAssign.*.workspace</code></a></span></dt><dd><p>Name of the workspace to assign.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "Web"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.extraConfig"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.extraConfig"><code class="option">wayland.windowManager.sway.extraConfig</code></a></span></dt><dd><p>Extra configuration lines to add to ~/.config/sway/config.</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix#blob-path" target="_top">
@@ -12429,6 +12453,90 @@ must be set.
         "~/.local/share"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg.nix#blob-path" target="_top">
                     &lt;home-manager/modules/misc/xdg.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries"></a><a class="term" href="options.html#opt-xdg.desktopEntries"><code class="option">xdg.desktopEntries</code></a></span></dt><dd><p>Desktop Entries allow applications to be shown in your desktop environment's app launcher. </p><p>
+You can define entries for programs without entries or override existing entries. </p><p>
+See <a class="link" href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys" target="_top">https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys</a> for more information on options.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of submodules</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  firefox = {
+    name = "Firefox";
+    genericName = "Web Browser";
+    exec = "firefox %U";
+    terminal = false;
+    categories = [ "Application" "Network" "WebBrowser" ];
+    mimeType = [ "text/html" "text/xml" ];
+  };
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.categories"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.categories"><code class="option">xdg.desktopEntries.&lt;name&gt;.categories</code></a></span></dt><dd><p>Categories in which the entry should be shown in a menu.</p><p><span class="emphasis"><em>Type:</em></span> null or list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.comment"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.comment"><code class="option">xdg.desktopEntries.&lt;name&gt;.comment</code></a></span></dt><dd><p>Tooltip for the entry.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.exec"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.exec"><code class="option">xdg.desktopEntries.&lt;name&gt;.exec</code></a></span></dt><dd><p>Program to execute, possibly with arguments.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.extraConfig"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.extraConfig"><code class="option">xdg.desktopEntries.&lt;name&gt;.extraConfig</code></a></span></dt><dd><p>Extra configuration. Will be appended to the end of the file and 
+may thus contain extra sections.
+</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.fileValidation"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.fileValidation"><code class="option">xdg.desktopEntries.&lt;name&gt;.fileValidation</code></a></span></dt><dd><p>Whether to validate the generated desktop file.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.genericName"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.genericName"><code class="option">xdg.desktopEntries.&lt;name&gt;.genericName</code></a></span></dt><dd><p>Generic name of the application.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.icon"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.icon"><code class="option">xdg.desktopEntries.&lt;name&gt;.icon</code></a></span></dt><dd><p>Icon to display in file manager, menus, etc.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.mimeType"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.mimeType"><code class="option">xdg.desktopEntries.&lt;name&gt;.mimeType</code></a></span></dt><dd><p>The MIME type(s) supported by this application.</p><p><span class="emphasis"><em>Type:</em></span> null or list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.name"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.name"><code class="option">xdg.desktopEntries.&lt;name&gt;.name</code></a></span></dt><dd><p>Specific name of the application.</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.settings"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.settings"><code class="option">xdg.desktopEntries.&lt;name&gt;.settings</code></a></span></dt><dd><p>Extra key-value pairs to add to the <code class="literal">[Desktop Entry]</code> section. 
+This may override other values.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of Concatenated strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  Keywords = "calc;math";
+  DBusActivatable = "false";
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.startupNotify"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.startupNotify"><code class="option">xdg.desktopEntries.&lt;name&gt;.startupNotify</code></a></span></dt><dd><p>If true, it is KNOWN that the application will send a "remove" 
+message when started with the <code class="literal">DESKTOP_STARTUP_ID</code> 
+environment variable set. If false, it is KNOWN that the application 
+does not work with startup notification at all.</p><p><span class="emphasis"><em>Type:</em></span> null or boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.terminal"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.terminal"><code class="option">xdg.desktopEntries.&lt;name&gt;.terminal</code></a></span></dt><dd><p>Whether the program runs in a terminal window.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.desktopEntries._name_.type"></a><a class="term" href="options.html#opt-xdg.desktopEntries._name_.type"><code class="option">xdg.desktopEntries.&lt;name&gt;.type</code></a></span></dt><dd><p>The type of the desktop entry.</p><p><span class="emphasis"><em>Type:</em></span> one of "Application", "Link", "Directory"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "Application"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/xdg-desktop-entries.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/misc/xdg-desktop-entries.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xdg.mime.enable"></a><a class="term" href="options.html#opt-xdg.mime.enable"><code class="option">xdg.mime.enable</code></a></span></dt><dd><p>Whether to install programs and files to support the
 XDG Shared MIME-info specification and XDG MIME Applications
 specification at
@@ -13519,6 +13627,30 @@ start.
         "default"
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         "tabbed"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.workspaceOutputAssign"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.workspaceOutputAssign"><code class="option">xsession.windowManager.i3.config.workspaceOutputAssign</code></a></span></dt><dd><p>Assign workspaces to outputs.</p><p><span class="emphasis"><em>Type:</em></span> list of submodules</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.workspaceOutputAssign._.output"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.workspaceOutputAssign._.output"><code class="option">xsession.windowManager.i3.config.workspaceOutputAssign.*.output</code></a></span></dt><dd><p>Name of the output from <span class="command"><strong>
+  i3-msg -t get_outputs
+</strong></span>.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "eDP"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.config.workspaceOutputAssign._.workspace"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.config.workspaceOutputAssign._.workspace"><code class="option">xsession.windowManager.i3.config.workspaceOutputAssign.*.workspace</code></a></span></dt><dd><p>Name of the workspace to assign.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "Web"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/i3.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/window-managers/i3-sway/i3.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-xsession.windowManager.i3.extraConfig"></a><a class="term" href="options.html#opt-xsession.windowManager.i3.extraConfig"><code class="option">xsession.windowManager.i3.extraConfig</code></a></span></dt><dd><p>Extra configuration lines to add to ~/.config/i3/config.</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
